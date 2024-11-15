@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+  stress-ng:
+    image: colinianking/stress-ng:latest
+    command: ["--cpu", "2","--cpu-load","60", "--vm", "1", "--vm-bytes", "1024M", "--vm-keep"]
+    restart: always

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:9.1
+    container_name: mysql-server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: easycontainer
+      MYSQL_USER: easy
+      MYSQL_PASSWORD: yourpassword
+      TZ: Asia/Shanghai
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
