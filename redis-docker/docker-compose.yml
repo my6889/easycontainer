@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   redis:
     image: redis:7.4.1
@@ -11,4 +10,15 @@ services:
       - ./redis_data:/data
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-
+  redis-sentinel:
+    image: redis:7.4.1
+    container_name: redis-sentinel
+    sysctls:
+      - net.core.somaxconn=511
+    ports:
+      - "26379:26379"
+    volumes:
+      - ./sentinel.conf:/usr/local/etc/redis/sentinel.conf
+    command: [ "redis-sentinel", "/usr/local/etc/redis/sentinel.conf" ]
+    depends_on:
+      - redis
