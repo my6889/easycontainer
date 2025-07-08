@@ -2,6 +2,7 @@ version: "3.8"
 services:
   postgresql:
     image: postgres:17.0
+    container_name: postgresql
     restart: always
     env_file:
       - postgresql.env
