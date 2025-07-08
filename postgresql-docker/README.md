@@ -1,10 +1,7 @@
 使用方式：
 
 1.修改postgresql.env中的密码
-
 2.使用docker-compose启动容器
-
-
 
 postgres容器环境变量，仅可设置POSTGRES_PASSWORD，POSTGRES_USER，POSTGRES_DB，POSTGRES_INITDB_ARGS，POSTGRES_INITDB_WALDIR，POSTGRES_HOST_AUTH_METHOD，PGDATA。其中仅有POSTGRES_PASSWORD是必需项，其它环境变量均为可选项。
 
@@ -21,6 +18,9 @@ postgres容器环境变量，仅可设置POSTGRES_PASSWORD，POSTGRES_USER，POS
 shared_buffers=512M
 max_connections=300
 timezone=Asia/Shanghai
+log_timezone=Asia/Shanghai
 ```
 
-
+关于备份：
+1.修改crontab.config文件中的XXX为绝对目录位置。
+2.把crontab.config文件中的两行复制到系统定时任务配置中。
