@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   clickhouse-server:
-    image: harbor.socmap.net/ops/clickhouse-server:24.2.3.70 
+    image: clickhouse/clickhouse-server:24.2.3.70 
     container_name: clickhouse-server
     environment:
       - CLICKHOUSE_DB=default
@@ -15,5 +15,5 @@ services:
     volumes:
       - ./clickhouse_data:/var/lib/clickhouse
       - ./clickhouse_logs:/var/log/clickhouse-server
-      - ./clickhouse_config:/etc/clickhouse-server
+      #- ./clickhouse_config:/etc/clickhouse-server
     restart: always
