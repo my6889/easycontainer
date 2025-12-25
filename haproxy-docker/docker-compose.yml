@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  lb:
+    image: haproxy:3.1
+    container_name: haproxy
+    restart: always
+    ports:
+      - "33060:33060"   # 对应 MySQL 规则
+      - "16379:16379"   # 对应 Redis 规则
+      - "2222:2222"   # 对应 SSH 规则
+      - "8404:8404"   # 监控页面
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ulimits:
+      nofile:
+        soft: 10240
+        hard: 10240
